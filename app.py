@@ -4,9 +4,7 @@ import joblib
 import pandas as pd
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS to allow cross-origin requests from your frontend
-
-# Load the model and scaler (only once when the app starts)
+CORS(app)  
 model = joblib.load('monkeypox_model.pkl')
 scaler = joblib.load('scaler.pkl')
 
@@ -43,7 +41,7 @@ def predict_monkeypox():
         prediction = model.predict(symptoms_scaled)
         
         # Return the prediction result
-        result = 'Positive for monkeypox' if prediction[0] == 1 else 'Negative for monkeypox'
+        result = 'Positive for Monkeypox' if prediction[0] == 1 else 'Negative for Monkeypox'
         
         return jsonify({'result': result})
     
